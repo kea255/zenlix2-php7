@@ -2,6 +2,7 @@
 session_start();
 
 //error_reporting(0);
+if(!defined('ROOT_DIR')) define('ROOT_DIR', '../../');
 include_once (ROOT_DIR."/functions.inc.php");
 if ($CONF_HD['debug_mode'] == false) {
     error_reporting(E_ALL ^ E_NOTICE);

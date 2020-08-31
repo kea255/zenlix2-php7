@@ -2,6 +2,7 @@
 session_start();
 
 //include("../functions.inc.php");
+if(!defined('ROOT_DIR')) define('ROOT_DIR', '../../');
 include_once (ROOT_DIR."/functions.inc.php");
 
 if (isset($_POST['menu'])) {

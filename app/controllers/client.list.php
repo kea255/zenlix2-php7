@@ -1,5 +1,6 @@
 <?php
 session_start();
+if(!defined('ROOT_DIR')) define('ROOT_DIR', '../../');
 include_once (ROOT_DIR."/functions.inc.php");
 $CONF['title_header'] = lang('LIST_title') . " - " . lang('MAIN_TITLE');
 if (validate_client($_SESSION['helpdesk_user_id'], $_SESSION['code'])) {

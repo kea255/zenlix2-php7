@@ -1,6 +1,6 @@
 var mysql = require('mysql'); 
  var db = mysql.createConnection({
-host: 'localhost',
+host: '192.168.89.111',
 user: 'zenlix',
 password: 'WtzSsNGGyX99eVyX',
 database: 'zenlix'});
@@ -46,9 +46,14 @@ var io = require('/usr/local/lib/node_modules/socket.io').listen(8080);
 
 
 
-//insert into `notification_msg_pool` (delivers_id, type_op) values ('7371a131b959f3527cbde59f0e5caf96', 'ticket_create');
+//insert into `notification_msg_pool` (delivers_id, type_op) values ('ddbd0ba5c62edfadad1735ca73d1ed1e', 'ticket_create');
 db.connect(function(err){
-    if (err) console.log(err)
+    if(err){
+      console.error("Ошибка: ", err);
+    }
+    else{
+      console.log("Подключение к серверу MySQL успешно установлено");
+    }
 });
 //setInterval(function(){ io.sockets.emit('timer_sec', {'text':'Таймер прошел!'}) },         10000);
 
@@ -57,9 +62,11 @@ db.connect(function(err){
 var initial_result;
 
 setInterval(function(){
-
+	//io.sockets.emit('timer_sec', {'text':'Таймер прошел!'});
     db.query('select * from notification_msg_pool', function(err, rows, fields) {
-        //if(err) { throw new Error('Failed');}
+        if(err) { throw new Error('Failed');}
+		
+		//io.sockets.emit('timer_sec', {'text':'записей '+rows.length});
         
         
         if (rows.length  > 0) {

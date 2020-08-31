@@ -24,7 +24,7 @@ $(document).ready(function() {
     });
     //push_msg_action2user
     socket.on("new_msg", function(data) {
-        //console.log(data.type_op);
+        console.log(data.type_op);
         switch (data.type_op) {
             case 'ticket_create':
                 if (data.zen_sid != ZENLIX_session_id) {
