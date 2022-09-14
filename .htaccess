@@ -1,6 +1,11 @@
 RewriteEngine on
-RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+RewriteBase /
+
+#RewriteCond %{HTTPS} off
+#RewriteCond %{REQUEST_URI} index.php
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/\.
 RewriteRule . index.php [L]
